@@ -24,7 +24,7 @@
         <input type="number" name="rate" value="${rate}">
     </div>
     <div >
-        <button>Convert</button>
+        <button type="submit">Convert</button>
     </div>
 
     <c:if test="${result!=null}">
