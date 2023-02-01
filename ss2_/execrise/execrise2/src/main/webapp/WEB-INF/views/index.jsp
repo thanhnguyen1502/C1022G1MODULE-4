@@ -17,12 +17,15 @@
 <form action="/" method="post">
     <input type="number" value="${number1}" name="number1">
     <input type="number" value="${number2}" name="number2">
-    <button value="addition" name="condition">Addition(+)</button>
-    <button value="suptraction" name="condition">Suptraction(-)</button>
-    <button value="sutiplication" name="condition">Mutiplication(x)</button>
-    <button value="sivition" name="condition">Divition(:)</button>
-    <h3>Result: ${resutl}</h3>
+
+    <div>
+        <button value="addition" name="condition">Addition(+)</button>
+        <button value="suptraction" name="condition">Suptraction(-)</button>
+        <button value="mutiplication" name="condition">Mutiplication(x)</button>
+        <button value="divition" name="condition">Divition(:)</button>
+    </div>
 
 </form>
+<h3>Result: ${resutl}</h3>
 </body>
 </html>

@@ -16,13 +16,13 @@ public class CaculationService implements ICaculationService {
                 result = num1 + num2;
                 break;
             case "suptraction":
-                result = num1 + num2;
+                result = num1 - num2;
                 break;
             case "mutiplication":
-                result = num1 + num2;
+                result = num1 * num2;
                 break;
             case "divition":
-                result = num1 + num2;
+                result = num1 / num2;
                 break;
         }
         return String.valueOf(result);
