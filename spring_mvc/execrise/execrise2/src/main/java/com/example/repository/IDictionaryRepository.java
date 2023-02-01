@@ -1,6 +1,5 @@
 package com.example.repository;
 
 public interface IDictionaryRepository {
-    String  translate(String word);
-
+    String translate(String word);
 }

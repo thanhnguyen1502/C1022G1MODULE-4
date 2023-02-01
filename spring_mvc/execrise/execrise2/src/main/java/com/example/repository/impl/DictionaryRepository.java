@@ -1,12 +1,13 @@
 package com.example.repository.impl;
 
 import com.example.repository.IDictionaryRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-@Service
+
+@Repository
 public class DictionaryRepository implements IDictionaryRepository {
     static private Map<String,String> dictionary = new HashMap<>();
     static {
