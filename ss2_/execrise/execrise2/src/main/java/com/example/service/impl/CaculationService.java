@@ -22,8 +22,15 @@ public class CaculationService implements ICaculationService {
                 result = num1 * num2;
                 break;
             case "divition":
-                result = num1 / num2;
-                break;
+                if (num2==0){
+                    return "vô nghiệm";
+                }else {
+                    result = num1 / num2;
+                    break;
+                }
+
+            default:
+                return "index";
         }
         return String.valueOf(result);
     }
