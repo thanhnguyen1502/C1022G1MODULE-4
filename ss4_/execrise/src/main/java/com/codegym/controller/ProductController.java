@@ -19,7 +19,7 @@ public class ProductController {
     private IProductService productService;
 
     @GetMapping("/")
-    public String index(Model model){
+    public String getIndexPage(Model model){
         List<Product> productList = productService.findAll();
         model.addAttribute("productList", productList);
         return "index";
@@ -49,5 +49,17 @@ public class ProductController {
         productService.update(product);
         redirectAttributes.addFlashAttribute("msg", "update complete");
         return "redirect:/";
+    }
+    @GetMapping(value = {"/search", "/"})
+    public String searchByName(String name, Model model) {
+        model.addAttribute("productList", productService.findAll(name));
+        return "list";
+    }
+
+    @GetMapping("/detail")
+    public String showDetail(@RequestParam int id, Model model) {
+        Product product = productService.showDetail(id);
+        model.addAttribute("product", product);
+        return "detail";
     }
 }
