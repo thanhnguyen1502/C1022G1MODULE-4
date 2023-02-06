@@ -19,24 +19,32 @@ public class ProductController {
     private IProductService productService;
 
     @GetMapping("/")
-    public String getIndexPage(Model model){
+    public String getIndexPage(Model model) {
         List<Product> productList = productService.findAll();
         model.addAttribute("productList", productList);
         return "index";
     }
 
+
     @GetMapping("/create")
-    public String create(Model model){
+    public String create(Model model) {
         model.addAttribute("product", new Product());
         return "create";
     }
 
+    @GetMapping("/delete")
+    public String remove(@RequestParam int id){
+        productService.remove(id);
+        return "redirect:/";
+
+    }
+
     @PostMapping("/save")
-    public String save(Product product){
-//        product.getId();
+    public String save(Product product) {
         productService.add(product);
         return "redirect:/";
     }
+
     @GetMapping("/edit")
     public String goUpdate(@RequestParam int id, Model model) {
         Product product = productService.findById(id);
@@ -50,10 +58,11 @@ public class ProductController {
         redirectAttributes.addFlashAttribute("msg", "update complete");
         return "redirect:/";
     }
-    @GetMapping(value = {"/search", "/"})
+
+    @GetMapping("/search")
     public String searchByName(String name, Model model) {
-        model.addAttribute("productList", productService.findAll(name));
-        return "list";
+        model.addAttribute("productList", productService.findByName(name));
+        return "index";
     }
 
     @GetMapping("/detail")

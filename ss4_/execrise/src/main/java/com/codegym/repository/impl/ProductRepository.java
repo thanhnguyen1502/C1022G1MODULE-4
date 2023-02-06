@@ -1,81 +1,76 @@
 package com.codegym.repository.impl;
 
 import com.codegym.model.Product;
+import com.codegym.repository.ConnectionUtil;
 import com.codegym.repository.IProductRepository;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class ProductRepository implements IProductRepository {
-    private static List<Product> products = new ArrayList<>();
 
-    static {
-        products.add(new Product(1, "iphone", "15000", "Apple"));
-        products.add(new Product(2, "note7", "17000", "Samsung"));
-        products.add(new Product(3, "galaxy", "12000", "galaxy"));
-        products.add(new Product(4, "motorola", "10000", "motorola"));
-    }
 
     @Override
     public List<Product> findAll() {
-        return products;
+        List<Product> productList = null;
+        Session session = ConnectionUtil.sessionFactory.openSession();
+        productList = session.createQuery("FROM Product", Product.class).getResultList();
+        session.close();
+        return productList;
     }
 
     @Override
     public void add(Product product) {
-        products.add(product);
+        Session session = ConnectionUtil.sessionFactory.openSession();
+        Transaction transaction = session.getTransaction();
+        transaction.begin();
+        session.save(product);
+        transaction.commit();
+        session.close();
+
     }
 
     @Override
     public void update(Product product) {
-        for (Product p : products) {
-            if (p.getId() == product.getId()) {
-//                p.setName(product.getName());
-//                p.setPrice(product.getPrice());
-//                p.setDescription(product.getDescription());
-//                p.setManufacture(product.getManufacture());
-                BeanUtils.copyProperties(product, p);
-            }
-        }
+
     }
 
     @Override
     public void remove(int id) {
-        products.remove(id);
-
+    Product product = ConnectionUtil.entityManager.find(Product.class, id);
+        EntityTransaction entityTransaction = ConnectionUtil.entityManager.getTransaction();
+        entityTransaction.begin();
+        ConnectionUtil.entityManager.remove(product);
+        entityTransaction.commit();
     }
 
     @Override
     public Product findByName(String name) {
-                List<Product> result = new ArrayList<>();
-        for (Product p : products){
-            if(p.getName().toLowerCase().contains(name.toLowerCase())){
-                result.add(p);
-            }
-        }
-        return result;
+        Session session = ConnectionUtil.sessionFactory.openSession();
+        TypedQuery<Product> query = session.createQuery("from Product as p where name =:name");
+        query.setParameter("name", name);
+        return query.getSingleResult();
     }
 
     @Override
     public Product findById(int id) {
-        Product product = null;
-        for (Product p : products) {
-            if (p.getId() == id) {
-                product = p;
-            }
-        }
-        return product;
+        Session session = ConnectionUtil.sessionFactory.openSession();
+        TypedQuery<Product> query = session.createQuery("from Product as p where id = : id");
+        query.setParameter("id", id);
+        return query.getSingleResult();
     }
 
     @Override
     public Product showDetail(int id) {
-        for (Product p : products) {
-            if (p.getId() == id)
-                return p;
-        }
+
         return null;
     }
 }
