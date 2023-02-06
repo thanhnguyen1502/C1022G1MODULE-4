@@ -5,13 +5,10 @@ import com.codegym.repository.ConnectionUtil;
 import com.codegym.repository.IProductRepository;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
-import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -40,12 +37,15 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public void update(Product product) {
-
+        EntityTransaction entityTransaction = ConnectionUtil.entityManager.getTransaction();
+        entityTransaction.begin();
+        ConnectionUtil.entityManager.merge(product);
+        entityTransaction.commit();
     }
 
     @Override
     public void remove(int id) {
-    Product product = ConnectionUtil.entityManager.find(Product.class, id);
+        Product product = ConnectionUtil.entityManager.find(Product.class, id);
         EntityTransaction entityTransaction = ConnectionUtil.entityManager.getTransaction();
         entityTransaction.begin();
         ConnectionUtil.entityManager.remove(product);

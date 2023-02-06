@@ -67,7 +67,7 @@ public class ProductController {
 
     @GetMapping("/detail")
     public String showDetail(@RequestParam int id, Model model) {
-        Product product = productService.showDetail(id);
+        Product product = productService.findById(id);
         model.addAttribute("product", product);
         return "detail";
     }

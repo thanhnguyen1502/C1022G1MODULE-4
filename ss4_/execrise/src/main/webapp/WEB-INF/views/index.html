@@ -23,7 +23,7 @@
 <div class="container">
     <table class="table table-dark table-hover">
         <tr>
-            <th>id</th>
+            <th>#</th>
             <th>name</th>
             <th>price</th>
             <th>producer</th>
@@ -32,8 +32,9 @@
             <th>Detail</th>
 
         </tr>
-        <tr th:each="product : ${productList}">
-            <td th:text="${product.getId()}"></td>
+        <tr th:each="product , count : ${productList}">
+<!--            <td th:text="${product.getId()}"></td>-->
+            <td th:text="${count.count}"></td>
             <td th:text="${product.getName()}"></td>
             <td th:text="${product.getPrice()}"></td>
             <td th:text="${product.getProducer()}"></td>
@@ -80,7 +81,7 @@
 <script>
     function showModal(a, b) {
         document.getElementById("infoModal").value = a;
-        document.getElementById("infoModalName").innerText = "Confirm delete id=" + a + " and product name = "+b +" ?" ;
+        document.getElementById("infoModalName").innerText = "Bạn có muốn xoá sản phẩm:  "+ b +" ?" ;
     }
 
     window.onload = function () {
