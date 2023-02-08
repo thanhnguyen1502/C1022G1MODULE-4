@@ -12,17 +12,21 @@ public class Blog {
 
     private String author;
 
+    @ManyToOne
+    @JoinColumn(name = "catelogy_id",referencedColumnName = "id")
+    private Catelory catelory;
     @Column(columnDefinition = "")
     private String content;
 
     public Blog() {
     }
 
-    public Blog(int id, String title, String author, String content) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.content = content;
+    public Catelory getCatelory() {
+        return catelory;
+    }
+
+    public void setCatelory(Catelory catelory) {
+        this.catelory = catelory;
     }
 
     public int getId() {

@@ -3,6 +3,10 @@ package com.example.execrise.controller;
 import com.example.execrise.model.Blog;
 import com.example.execrise.service.IBlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,16 +15,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 @Controller
 public class BlogController {
     @Autowired
     private IBlogService blogService;
-
-    @GetMapping("/blog")
-    public String goHome(Model model){
-        model.addAttribute("blogs", blogService.finAll());
-        return "blog-home";
-    }
+//
+//    @GetMapping("/blog")
+//    public String goHome(Model model){
+//        model.addAttribute("blogs", blogService.finAll());
+//        return "blog-home";
+//    }
 
     @GetMapping("/create")
     public String create(Model model){
@@ -60,5 +65,14 @@ public class BlogController {
         this.blogService.deleteBlog(senId);
 
         return "redirect:/blog";
+    }
+
+    @GetMapping("/blog")
+    public String showList(Model model, @RequestParam(required = false, defaultValue = "") String titleSearch,
+                           @PageableDefault(size = 2, page = 0) Pageable pageable){
+        Page<Blog> blogPage = blogService.search(titleSearch, pageable);
+        model.addAttribute("blogPage", blogPage);
+        model.addAttribute("titleSearch", titleSearch);
+        return "blog-home";
     }
 }
