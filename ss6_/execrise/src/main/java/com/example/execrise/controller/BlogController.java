@@ -2,6 +2,7 @@ package com.example.execrise.controller;
 
 import com.example.execrise.model.Blog;
 import com.example.execrise.service.IBlogService;
+import com.example.execrise.service.ICateloryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +21,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class BlogController {
     @Autowired
     private IBlogService blogService;
+
+    @Autowired
+    private ICateloryService cateloryService;
 //
 //    @GetMapping("/blog")
 //    public String goHome(Model model){
@@ -55,6 +59,7 @@ public class BlogController {
 
         model.addAttribute("blog",
                 this.blogService.findById(id));
+        model.addAttribute("cateloryList",cateloryService.findAll());
 
         return "/blog-edit";
     }
