@@ -2,11 +2,10 @@ package com.example.execrise.controller;
 
 import com.example.execrise.model.Blog;
 import com.example.execrise.service.IBlogService;
-import com.example.execrise.service.ICateloryService;
+import com.example.execrise.service.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +22,7 @@ public class BlogController {
     private IBlogService blogService;
 
     @Autowired
-    private ICateloryService cateloryService;
+    private ICategoryService cateloryService;
 //
 //    @GetMapping("/blog")
 //    public String goHome(Model model){
@@ -59,7 +58,7 @@ public class BlogController {
 
         model.addAttribute("blog",
                 this.blogService.findById(id));
-        model.addAttribute("cateloryList",cateloryService.findAll());
+        model.addAttribute("categoryList",cateloryService.findAll());
 
         return "/blog-edit";
     }

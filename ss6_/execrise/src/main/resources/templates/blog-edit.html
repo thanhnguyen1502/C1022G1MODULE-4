@@ -41,9 +41,9 @@
 <!--                    <label for="catelory" class="form-label fw-bold">Category</label>-->
                     <!--                    <input th:field="*{catelory}" type="text" id="catelory">-->
                     <label class="form-label fw-bold">Category</label>
-                    <select class="form-select" aria-label="Default select example" th:field="*{catelory}">
+                    <select class="form-select" aria-label="Default select example" th:field="*{category}">
 <!--                        <option >Open this select menu</option>-->
-                        <option th:each="cate:${cateloryList}" th:value="${cate.id}" th:text="${cate.name}"></option>
+                        <option th:each="cate:${categoryList}" th:value="${cate.id}" th:text="${cate.name}"></option>
                     </select>
                 </div>
 

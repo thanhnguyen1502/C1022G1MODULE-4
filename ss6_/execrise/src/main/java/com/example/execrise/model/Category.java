@@ -4,17 +4,17 @@ import javax.persistence.*;
 import java.util.Set;
 @Entity
 @Table(name = "catelory")
-public class Catelory {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany(mappedBy = "catelory")
+    @OneToMany(mappedBy = "category")
     private Set<Blog> blogSet;
 
     private String name;
 
-    public Catelory() {
+    public Category() {
     }
 
 

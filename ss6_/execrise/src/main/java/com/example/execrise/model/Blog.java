@@ -13,8 +13,8 @@ public class Blog {
     private String author;
 
     @ManyToOne
-    @JoinColumn(name = "catelogy_id",referencedColumnName = "id")
-    private Catelory catelory;
+    @JoinColumn(name = "category_id",referencedColumnName = "id")
+    private Category category;
 
 
     @Column(columnDefinition = "character varying (100) not null",length=100,nullable=false)
@@ -23,12 +23,12 @@ public class Blog {
     public Blog() {
     }
 
-    public Catelory getCatelory() {
-        return catelory;
-    }
-
-    public void setCatelory(Catelory catelory) {
-        this.catelory = catelory;
+    public Blog(int id, String title, String author, Category category, String content) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.category = category;
+        this.content = content;
     }
 
     public int getId() {
@@ -53,6 +53,14 @@ public class Blog {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getContent() {

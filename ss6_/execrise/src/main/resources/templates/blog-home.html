@@ -42,7 +42,7 @@
                     <th scope="row" th:text="${status.count}"></th>
                     <td th:text="${blog.title}"></td>
                     <td th:text="${blog.author}"></td>
-                    <td th:if="${blog.catelory}" th:text="${blog.catelory.name}"></td>
+                    <td th:if="${blog.category}" th:text="${blog.category.name}"></td>
                     <td>
                         <a class="btn btn-secondary" th:href="@{/read(id=${blog.id})}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

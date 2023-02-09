@@ -24,10 +24,10 @@
         <th>Update</th>
         <th>Delete</th>
     </tr>
-    <tr th:each="catelory, status : ${cateloryList}">
+    <tr th:each="category, status : ${categoryList}">
         <td th:text="${status.count}"></td>
-        <td th:text="${catelory.id}"></td>
-        <td th:text="${catelory.name}"></td>
+        <td th:text="${category.id}"></td>
+        <td th:text="${category.name}"></td>
         <td>
             <buton class="btn btn-success">Update</buton>
         </td>
