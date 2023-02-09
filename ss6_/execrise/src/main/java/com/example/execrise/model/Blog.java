@@ -15,7 +15,9 @@ public class Blog {
     @ManyToOne
     @JoinColumn(name = "catelogy_id",referencedColumnName = "id")
     private Catelory catelory;
-    @Column(columnDefinition = "")
+
+
+    @Column(columnDefinition = "character varying (100) not null",length=100,nullable=false)
     private String content;
 
     public Blog() {
