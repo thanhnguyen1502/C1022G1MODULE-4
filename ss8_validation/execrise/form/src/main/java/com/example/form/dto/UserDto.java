@@ -4,6 +4,7 @@ import org.springframework.validation.BindingResult;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.validation.executable.ExecutableValidator;
@@ -23,8 +24,8 @@ public class UserDto implements Validator {
     @Pattern(regexp = "^[0-9]+$", message = "phonenumber no true")
     private String phone;
 
-
-    private LocalDate age;
+    @Pattern(regexp = "^0?(1[89]|[2-9]\\d)$" , message= ">=18")
+    private String age;
 
     @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "email no true")
     private String email;
@@ -32,7 +33,7 @@ public class UserDto implements Validator {
     public UserDto() {
     }
 
-    public UserDto(int id, String firstName, String nameLast, String phone, LocalDate age, String email) {
+    public UserDto(int id, String firstName, String nameLast, String phone, String age, String email) {
         this.id = id;
         this.firstName = firstName;
         this.nameLast = nameLast;
@@ -73,11 +74,12 @@ public class UserDto implements Validator {
         this.phone = phone;
     }
 
-    public LocalDate getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(LocalDate age) {
+
+    public void setAge(String age) {
         this.age = age;
     }
 

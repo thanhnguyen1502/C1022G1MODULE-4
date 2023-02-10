@@ -14,13 +14,13 @@ public class User {
     private String firstName;
     private String nameLast;
     private String phone;
-    private LocalDate age;
+    private String age;
     private String email;
 
     public User() {
     }
 
-    public User(int id, String firstName, String nameLast, String phone, LocalDate age, String email) {
+    public User(int id, String firstName, String nameLast, String phone, String age, String email) {
         this.id = id;
         this.firstName = firstName;
         this.nameLast = nameLast;
@@ -61,11 +61,11 @@ public class User {
         this.phone = phone;
     }
 
-    public LocalDate getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(LocalDate age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
