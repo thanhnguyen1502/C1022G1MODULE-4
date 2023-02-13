@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.LocalDate;
 
 @Entity
 public class User {
@@ -12,7 +11,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String firstName;
-    private String nameLast;
+    private String lastName;
     private String phone;
     private String age;
     private String email;
@@ -23,7 +22,7 @@ public class User {
     public User(int id, String firstName, String nameLast, String phone, String age, String email) {
         this.id = id;
         this.firstName = firstName;
-        this.nameLast = nameLast;
+        this.lastName = nameLast;
         this.phone = phone;
         this.age = age;
         this.email = email;
@@ -45,12 +44,12 @@ public class User {
         this.firstName = firstName;
     }
 
-    public String getNameLast() {
-        return nameLast;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setNameLast(String nameLast) {
-        this.nameLast = nameLast;
+    public void setLastName(String nameLast) {
+        this.lastName = nameLast;
     }
 
     public String getPhone() {

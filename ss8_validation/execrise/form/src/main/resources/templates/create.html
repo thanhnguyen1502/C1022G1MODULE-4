@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
 
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
@@ -15,28 +20,28 @@
         <tr>
             <td class="form-label">First Name:</td>
             <td><input th:field="*{firstName}"  class="form-control"></td>
-            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" style="color: red">Name Error</td>
+            <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="error">Name Error</td>
         </tr>
         <tr>
             <td  class="form-label">Last Name:</td>
-            <td><input th:field="*{nameLast}"  class="form-control"></td>
-            <td th:if="${#fields.hasErrors('nameLast')}" th:errors="*{nameLast}" style="color: red">Name Error</td>
+            <td><input th:field="*{lastName}"  class="form-control"></td>
+            <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error">Name Error</td>
         </tr>
         <tr>
             <td  class="form-label">Phone Number:</td>
             <td><input th:field="*{phone}"  class="form-control"></td>
-            <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" style="color: red">Name Error</td>
+            <td th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="error">Name Error</td>
         </tr>
 
         <tr>
             <td  class="form-label">Age:</td>
             <td><input type="number" th:field="*{age}"  class="form-control"></td>
-            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}" style="color: red">Name Error</td>
+            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error">Name Error</td>
         </tr>
         <tr>
             <td  class="form-label">Email:</td>
             <td><input th:field="*{email}"  class="form-control"></td>
-            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red">Name Error</td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error">Name Error</td>
         </tr>
         <tr>
             <td>

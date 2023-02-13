@@ -6,9 +6,10 @@
     <title>Title</title>
 </head>
 <body>
-<p th:text="${mess}"></p>
+
 <a class="btn btn-success" href="/create">Create New User</a>
 <div class="d-flex justify-content-center"><h1>USER LIST</h1></div>
+<p th:text="${mess}" class="btn-light"></p>
 <table class="table-hover table">
     <tr>
         <th>#</th>
@@ -21,7 +22,7 @@
     <tr th:each="user, count :${userList}">
         <td th:text="${count.count}"></td>
         <td th:text="${user.firstName}"></td>
-        <td th:text="${user.nameLast}"></td>
+        <td th:text="${user.lastName}"></td>
         <td th:text="${user.phone}"></td>
         <td th:text="${user.age}"></td>
         <td th:text="${user.email}"></td>
