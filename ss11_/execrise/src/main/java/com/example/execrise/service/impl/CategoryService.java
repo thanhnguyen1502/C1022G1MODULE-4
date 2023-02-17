@@ -14,6 +14,7 @@ import java.util.List;
 public class CategoryService implements ICategoryService {
     @Autowired
     private ICategoryRepository categoryRepository;
+
     @Override
     public Category findCategoryById(int id) {
         return categoryRepository.findById(id).orElse(new Category());

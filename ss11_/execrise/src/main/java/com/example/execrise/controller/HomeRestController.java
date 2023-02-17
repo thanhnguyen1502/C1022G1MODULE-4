@@ -1,6 +1,7 @@
 package com.example.execrise.controller;
 
 
+import com.example.execrise.dto.BlogDto;
 import com.example.execrise.model.Blog;
 import com.example.execrise.model.Category;
 import com.example.execrise.service.IBlogService;
@@ -78,7 +79,7 @@ public class HomeRestController {
     }
 
     @PostMapping("/addBlog")
-    public ResponseEntity<Map<String, String>> addBlog(@RequestBody @Valid BlogDTO blogDTO, BindingResult bindingResult) {
+    public ResponseEntity<Map<String, String>> addBlog(@RequestBody @Valid BlogDto blogDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
 

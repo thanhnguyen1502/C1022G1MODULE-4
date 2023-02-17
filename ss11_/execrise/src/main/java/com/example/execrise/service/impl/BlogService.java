@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @Service
 public class BlogService implements IBlogService {
+
     @Autowired
     private IBlogRepository iBlogRepository;
 
