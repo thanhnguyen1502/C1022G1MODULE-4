@@ -21,4 +21,19 @@ public class CustomerService implements ICustomerService {
     public Page<Customer> findAllByContracts_EndDateBefore(String now, Pageable pageable) {
         return customerRepository.findAllByContracts_EndDateGreaterThan(now, pageable);
     }
+
+    @Override
+    public void save(Customer customer) {
+        customerRepository.save(customer);
+    }
+
+    @Override
+    public Customer findById(int id) {
+        return customerRepository.getById(id);
+    }
+
+    @Override
+    public void deleteById(int id) {
+        customerRepository.deleteById(id);
+    }
 }
