@@ -1,4 +1,4 @@
-package com.example.casestudy.service;
+package com.example.casestudy.service.impl.customer;
 
 import com.example.casestudy.model.customer.Customer;
 import org.springframework.data.domain.Page;
