@@ -10,6 +10,7 @@ public class Position {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(unique = true)
     private String name;
 
     @OneToMany(mappedBy = "position")
@@ -18,11 +19,7 @@ public class Position {
     public Position() {
     }
 
-    public Position(int id, String name, List<Employee> employees) {
-        this.id = id;
-        this.name = name;
-        this.employees = employees;
-    }
+
 
     public int getId() {
         return id;

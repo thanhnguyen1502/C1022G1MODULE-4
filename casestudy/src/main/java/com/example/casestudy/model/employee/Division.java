@@ -12,6 +12,7 @@ public class Division {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(unique = true)
     private String name;
 
     @OneToMany(mappedBy = "division")
@@ -20,11 +21,6 @@ public class Division {
     public Division() {
     }
 
-    public Division(int id, String name, List<Employee> employees) {
-        this.id = id;
-        this.name = name;
-        this.employees = employees;
-    }
 
     public int getId() {
         return id;

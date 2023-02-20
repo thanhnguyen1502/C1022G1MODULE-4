@@ -40,16 +40,7 @@ public class Contract {
     public Contract() {
     }
 
-    public Contract(int id, String startDate, String endDate, double deposit, Employee employeeId, Customer customerId, Facility facilityId, List<ContractDetail> contractDetails) {
-        this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.deposit = deposit;
-        this.employeeId = employeeId;
-        this.customerId = customerId;
-        this.facilityId = facilityId;
-        this.contractDetails = contractDetails;
-    }
+
 
     public int getId() {
         return id;

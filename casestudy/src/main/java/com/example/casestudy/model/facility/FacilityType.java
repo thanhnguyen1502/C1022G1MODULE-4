@@ -11,18 +11,13 @@ public class FacilityType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(unique = true)
     private String name;
 
     @OneToMany(mappedBy = "facilityType")
     private List<Facility> facilities;
 
     public FacilityType() {
-    }
-
-    public FacilityType(int id, String name, List<Facility> facilities) {
-        this.id = id;
-        this.name = name;
-        this.facilities = facilities;
     }
 
     public int getId() {

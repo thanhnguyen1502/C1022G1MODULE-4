@@ -10,6 +10,7 @@ public class RentType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(columnDefinition = "varchar(45)", nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "rentType")
@@ -18,11 +19,6 @@ public class RentType {
     public RentType() {
     }
 
-    public RentType(int id, String name, List<Facility> facilities) {
-        this.id = id;
-        this.name = name;
-        this.facilities = facilities;
-    }
 
     public int getId() {
         return id;

@@ -14,20 +14,22 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(columnDefinition = "varchar(45)", nullable = false)
     private String name;
 
     @Column(name = "date_of_birth")
     private String dateOfBirth;
 
-    @Column(name = "id_card")
+    @Column(unique = true)
     private String idCard;
 
     @Column(columnDefinition = "double")
     private String salary;
 
-    @Column(name = "phone_number")
+    @Column(unique = true)
     private String phoneNumber;
 
+    @Column(unique = true)
     private String email;
 
     private String address;
@@ -50,20 +52,6 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(int id, String name, String dateOfBirth, String idCard, String salary, String phoneNumber, String email, String address, Position position, EducationDegree educationDegree, Division division, List<Contract> contracts) {
-        this.id = id;
-        this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.idCard = idCard;
-        this.salary = salary;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
-        this.position = position;
-        this.educationDegree = educationDegree;
-        this.division = division;
-        this.contracts = contracts;
-    }
 
     public int getId() {
         return id;

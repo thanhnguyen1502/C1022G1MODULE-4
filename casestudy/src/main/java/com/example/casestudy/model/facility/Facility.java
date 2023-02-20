@@ -15,6 +15,7 @@ public class Facility {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(unique = true)
     private String name;
 
     @Column(columnDefinition = "int")
@@ -55,21 +56,6 @@ public class Facility {
     public Facility() {
     }
 
-    public Facility(int id, String name, String area, String cost, String maxPeople, String standard, String otherConvenience, String poolArea, String floors, String facilityFree, RentType rentType, FacilityType facilityType, List<Contract> contracts) {
-        this.id = id;
-        this.name = name;
-        this.area = area;
-        this.cost = cost;
-        this.maxPeople = maxPeople;
-        this.standard = standard;
-        this.otherConvenience = otherConvenience;
-        this.poolArea = poolArea;
-        this.floors = floors;
-        this.facilityFree = facilityFree;
-        this.rentType = rentType;
-        this.facilityType = facilityType;
-        this.contracts = contracts;
-    }
 
     public int getId() {
         return id;

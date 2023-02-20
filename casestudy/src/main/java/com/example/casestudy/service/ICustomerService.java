@@ -1,0 +1,11 @@
+package com.example.casestudy.service;
+
+import com.example.casestudy.model.customer.Customer;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+public interface ICustomerService {
+    Page<Customer> findAllByNameContaining(String nameCustomer, Pageable pageable);
+
+    Page<Customer> findAllByContracts_EndDateBefore(String now, Pageable pageable);
+}

@@ -12,6 +12,7 @@ public class EducationDegree {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(unique = true)
     private String Name;
 
     @OneToMany(mappedBy = "educationDegree")
@@ -20,11 +21,6 @@ public class EducationDegree {
     public EducationDegree() {
     }
 
-    public EducationDegree(int id, String name, List<Employee> employees) {
-        this.id = id;
-        Name = name;
-        this.employees = employees;
-    }
 
     public int getId() {
         return id;

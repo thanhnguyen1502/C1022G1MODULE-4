@@ -12,6 +12,7 @@ public class AttachFacility {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(columnDefinition = "varchar(45)", nullable = false)
     private String name;
 
     private double cost;
@@ -27,14 +28,7 @@ public class AttachFacility {
     public AttachFacility() {
     }
 
-    public AttachFacility(int id, String name, double cost, String unit, String status, List<ContractDetail> contractDetails) {
-        this.id = id;
-        this.name = name;
-        this.cost = cost;
-        this.unit = unit;
-        this.status = status;
-        this.contractDetails = contractDetails;
-    }
+
 
     public int getId() {
         return id;

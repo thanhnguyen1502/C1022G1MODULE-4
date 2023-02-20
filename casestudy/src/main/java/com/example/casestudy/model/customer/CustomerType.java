@@ -11,6 +11,7 @@ public class CustomerType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(columnDefinition = "varchar(45)", nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "customerType")
@@ -19,11 +20,6 @@ public class CustomerType {
     public CustomerType() {
     }
 
-    public CustomerType(int id, String name, List<Customer> customers) {
-        this.id = id;
-        this.name = name;
-        this.customers = customers;
-    }
 
     public int getId() {
         return id;

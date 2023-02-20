@@ -15,6 +15,8 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(columnDefinition = "varchar(45)", nullable = false)
+
     private String name;
 
     @Column(name = "date_of_birth")
@@ -22,12 +24,13 @@ public class Customer {
 
     private boolean gender;
 
-    @Column(name = "id_card")
+    @Column(unique = true)
     private String idCard;
 
-    @Column(name = "phone_number")
+    @Column(unique = true)
     private String phoneNumber;
 
+    @Column(unique = true)
     private String email;
 
     private String address;
@@ -42,18 +45,6 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int id, String name, String dateOfBirth, boolean gender, String idCard, String phoneNumber, String email, String address, CustomerType customerType, List<Contract> contracts) {
-        this.id = id;
-        this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
-        this.idCard = idCard;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
-        this.customerType = customerType;
-        this.contracts = contracts;
-    }
 
     public int getId() {
         return id;
