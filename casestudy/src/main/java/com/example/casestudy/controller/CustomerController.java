@@ -35,26 +35,11 @@ public class CustomerController {
         model.addAttribute("keySearch", keyval);
         return "customer-list";
     }
-    @GetMapping("/list")
-    public String goCustomerUsingServie(@PageableDefault(size = 3) Pageable pageable,
-                                        @RequestParam Optional<String> keySearch,
-                                        Model model) {
 
-        String keyVal = keySearch.orElse("");
-
-        String now = String.valueOf(LocalDate.now());
-
-        model.addAttribute("contracts",
-                this.customerService.findAllByContracts_EndDateBefore(now, pageable));
-
-        model.addAttribute("keySearch", keyVal);
-
-        return "customer-has-contract";
-    }
     @GetMapping("/create")
     public String create(Model model){
         model.addAttribute("customerDto", new CustomerDto());
-        model.addAttribute("customerType", this.customerTypeService.findAll());
+        model.addAttribute("customerTypeList", this.customerTypeService.findAll());
         return "customer-create";
     }
 
@@ -98,4 +83,5 @@ public class CustomerController {
 
         return "redirect:/customer/home";
     }
+
 }

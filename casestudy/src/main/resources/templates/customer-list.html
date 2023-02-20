@@ -119,17 +119,17 @@
     </div>
     <div class="row mt-3">
         <div class="col-lg-4 text-end">
-            <a th:if="${customers.hasPrevious()}"
-               th:href="@{/customer/home(page=${customers.number -1}, keySearch=${keySearch})}"
+            <a th:if="${customer.hasPrevious()}"
+               th:href="@{/customer/home(page=${customer.number -1}, keySearch=${keySearch})}"
                class="btn btn-success fst-italic">previous</a>
         </div>
         <div class="col-lg-4 text-center">
-            <span th:text="${customers.number + 1}"></span> /
-            <span th:text="${customers.totalPages}"></span>
+            <span th:text="${customer.number + 1}"></span> /
+            <span th:text="${customer.totalPages}"></span>
         </div>
         <div class="col-lg-4 text-start">
-            <a th:if="${customers.hasNext()}"
-               th:href="@{/customer/home(page=${customers.number + 1}, keySearch=${keySearch})}"
+            <a th:if="${customer.hasNext()}"
+               th:href="@{/customer/home(page=${customer.number + 1}, keySearch=${keySearch})}"
                class="btn btn-success fst-italic">next</a>
         </div>
     </div>
