@@ -7,7 +7,6 @@ import com.example.casestudy.model.facility.RentType;
 import com.example.casestudy.service.facility.IFacilityService;
 import com.example.casestudy.service.facility.IFacilityTypeService;
 import com.example.casestudy.service.facility.IRentTypeService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -15,10 +14,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -51,7 +47,7 @@ public class FacilityController {
         return "facility-create";
     }
 
-    @GetMapping("/save")
+    @PostMapping("/save")
     public String goCreateForm(@ModelAttribute @Valid FacilityDto facilityDto,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes,
