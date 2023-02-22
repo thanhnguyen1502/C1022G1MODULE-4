@@ -6,15 +6,19 @@ import org.w3c.dom.ls.LSResourceResolver;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
 
+import javax.validation.constraints.NotBlank;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.validation.Validator;
 import java.io.IOException;
 
 public class FacilityDto extends Validator {
+    @NotBlank(message = "không được để trống")
     private String name;
+    @NotBlank(message = "không được để trống")
 
     private String area;
+    @NotBlank(message = "không được để trống")
 
     private String cost;
 

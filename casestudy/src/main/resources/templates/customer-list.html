@@ -45,8 +45,16 @@
     <div class="row mt-2">
         <div class="col-lg-12 d-flex justify-content-center align-items-center">
             <form action="/customer/home" method="get" class="d-flex">
-                <input th:value="${nameCustomer}" class="form-control me-2 fst-italic" type="search" name="nameCustomer" placeholder="Search"
+                <input th:value="${nameCustomer}" class="form-control me-2 fst-italic" type="search" name="nameCustomer" placeholder="Name"
                        aria-label="Search">
+
+<!--                 <input th:value="${emailSearch}" class="form-control me-2 fst-italic" type="search" name="emailSearch" placeholder="Email"-->
+<!--                       aria-label="Search">-->
+
+<!--                 <input th:value="${customerType}" class="form-control me-2 fst-italic" type="search" name="customerType" placeholder="Customer type"-->
+<!--                       aria-label="Search">-->
+
+
                 <button class="btn btn-success" type="submit">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                          class="bi bi-search" viewBox="0 0 16 16">

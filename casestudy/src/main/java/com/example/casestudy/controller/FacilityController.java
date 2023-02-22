@@ -81,4 +81,37 @@ public class FacilityController {
 
         return "redirect:/facility/home";
     }
+    @GetMapping("/edit")
+    public String goEditForm(@RequestParam int id, Model model){
+
+        model.addAttribute("facility",
+                this.facilityService.findById(id));
+
+        model.addAttribute("facilityTypeList",
+                this.facilityTypeService.findAll());
+
+        model.addAttribute("rentTypeList",
+                this.rentTypeService.findAll());
+
+        return "facility-edit";
+    }
+
+    @PostMapping("/update")
+    public String updateFacility(@ModelAttribute Facility facility, RedirectAttributes redirectAttributes){
+
+        this.facilityService.save(facility);
+
+        redirectAttributes.addFlashAttribute("message",
+                "successfully update");
+
+        return "redirect:/facility/home";
+    }
+
+    @PostMapping("/delete")
+    public String deleteFacility(@RequestParam int facilityId){
+
+        this.facilityService.deleteById(facilityId);
+
+        return "redirect:/facility";
+    }
 }

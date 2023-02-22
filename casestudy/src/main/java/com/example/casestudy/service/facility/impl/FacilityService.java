@@ -1,7 +1,8 @@
-package com.example.casestudy.service.facility;
+package com.example.casestudy.service.facility.impl;
 
 import com.example.casestudy.model.facility.Facility;
 import com.example.casestudy.repository.facility.IFacilityRepository;
+import com.example.casestudy.service.facility.IFacilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class FacilityService implements IFacilityService{
+public class FacilityService implements IFacilityService {
     @Autowired
     private IFacilityRepository facilityRepository;
 
