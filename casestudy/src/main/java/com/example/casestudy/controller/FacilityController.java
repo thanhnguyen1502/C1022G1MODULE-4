@@ -32,10 +32,20 @@ public class FacilityController {
 
     @GetMapping("/home")
     public String goFacilityList(Model model, @PageableDefault(value = 3)Pageable pageable,
-                                 @RequestParam(value = "nameFacility", defaultValue = "") String nameFacility){
-        model.addAttribute("facility", facilityService.findAllByNameContaining(nameFacility,pageable));
-        model.addAttribute("nameFacility", nameFacility);
+                                 @RequestParam(value = "nameSearch", defaultValue = "") String nameSearch,
+                                 @RequestParam(value = "nameFacility", defaultValue = "0") Integer nameFacility
+                                 ){
+
+//        model.addAttribute("facilityList", facilityService.searchFacilityType(nameSearch, nameFacility, pageable));
+        model.addAttribute("facilityList", facilityService.findAllByNameContaining(nameSearch, pageable));
+        model.addAttribute("facilityTypeList",facilityTypeService.findAll());
+//        model.addAttribute("nameFacility", nameFacility);
+        model.addAttribute("nameSearch", nameSearch );
+
+
         return "facility-list";
+
+
     }
 
     @GetMapping("/create")
