@@ -8,10 +8,13 @@ import org.springframework.data.domain.Pageable;
 import java.util.Map;
 
 public interface ICustomerService {
-    Page<Customer> findAllByNameContaining(String nameCustomer, Pageable pageable);
+//    Page<Customer> findAllByNameContaining(String nameCustomer, Pageable pageable);
+//
+//    Page<Customer> findAllByContracts_EndDateBefore(String now, Pageable pageable);
 
-    Page<Customer> findAllByContracts_EndDateBefore(String now, Pageable pageable);
+    Page<Customer> searchCustomer(String nameSearch, String emailSearch, Pageable pageable);
 
+    Page<Customer> searchCustomerType(String nameSearch, String emailSearch, Integer customerType, Pageable pageable);
 
     Map<String, String> messDto(CustomerDto customerDto);
 

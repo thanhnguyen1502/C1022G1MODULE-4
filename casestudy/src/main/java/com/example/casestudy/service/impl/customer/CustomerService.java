@@ -17,14 +17,24 @@ public class CustomerService implements ICustomerService {
     private ICustomerRepository customerRepository;
 
 
+//    @Override
+//    public Page<Customer> findAllByNameContaining(String nameCustomer, Pageable pageable) {
+//        return customerRepository.findAllByNameContaining(nameCustomer, pageable);
+//    }
+//
+//    @Override
+//    public Page<Customer> findAllByContracts_EndDateBefore(String now, Pageable pageable) {
+//        return customerRepository.findAllByContracts_EndDateGreaterThan(now, pageable);
+//    }
+
     @Override
-    public Page<Customer> findAllByNameContaining(String nameCustomer, Pageable pageable) {
-        return customerRepository.findAllByNameContaining(nameCustomer, pageable);
+    public Page<Customer> searchCustomer(String nameSearch, String emailSearch, Pageable pageable) {
+        return customerRepository.searchCustomer(nameSearch,emailSearch,pageable);
     }
 
     @Override
-    public Page<Customer> findAllByContracts_EndDateBefore(String now, Pageable pageable) {
-        return customerRepository.findAllByContracts_EndDateGreaterThan(now, pageable);
+    public Page<Customer> searchCustomerType(String nameSearch, String emailSearch, Integer customerType, Pageable pageable) {
+        return customerRepository.searchCustomerType(nameSearch,emailSearch,customerType,pageable);
     }
 
     @Override

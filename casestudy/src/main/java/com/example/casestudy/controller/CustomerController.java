@@ -26,15 +26,36 @@ public class CustomerController {
     @Autowired
     private ICustomerTypeService customerTypeService;
 
+//    @GetMapping("/home")
+//    public String goCustomerList(Model model, @PageableDefault(value = 3)Pageable pageable,
+//                                 @RequestParam(value = "nameCustomer", defaultValue = " ") String nameCustomer)
+//    {
+//        model.addAttribute("customer",customerService.findAllByNameContaining(nameCustomer, pageable));
+//        model.addAttribute("nameCustomer", nameCustomer);
+//        return "customer-list";
+//    }
+
     @GetMapping("/home")
-    public String goCustomerList(Model model, @PageableDefault(value = 3)Pageable pageable,
-                                 @RequestParam(value = "nameCustomer", defaultValue = " ") String nameCustomer)
-    {
-        model.addAttribute("customer",customerService.findAllByNameContaining(nameCustomer, pageable));
-        model.addAttribute("nameCustomer", nameCustomer);
+    public String showList(@PageableDefault(value = 5) Pageable pageable,
+                           @RequestParam(value = "nameSearch", defaultValue = "") String nameSearch,
+                           @RequestParam(value = "emailSearch", defaultValue = "") String emailSearch,
+                           @RequestParam(value = "customerType", defaultValue = "0") Integer customerType,
+                           Model model) {
+
+        if (customerType == 0) {
+            model.addAttribute("customer", customerService.searchCustomer(nameSearch, emailSearch
+                    , pageable));
+        } else {
+            model.addAttribute("customer", customerService.searchCustomerType(nameSearch,
+                    emailSearch, customerType, pageable));
+        }
+        model.addAttribute("customerTypeList", customerTypeService.findAll());
+        model.addAttribute("nameSearch", nameSearch);
+        model.addAttribute("addressSearch", emailSearch);
+        model.addAttribute("customerType", customerType);
+
         return "customer-list";
     }
-
 
     @GetMapping("/create")
     public String create(Model model){

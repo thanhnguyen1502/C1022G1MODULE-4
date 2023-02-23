@@ -1,11 +1,9 @@
 package com.example.casestudy.controller;
 
 import com.example.casestudy.dto.contract.ContractDto;
-import com.example.casestudy.model.contract.Contract;
 import com.example.casestudy.service.contract.IAttachFacilityService;
 import com.example.casestudy.service.contract.IContractDetailService;
 import com.example.casestudy.service.contract.IContractService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
