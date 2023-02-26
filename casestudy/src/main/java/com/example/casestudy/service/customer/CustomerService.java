@@ -1,4 +1,4 @@
-package com.example.casestudy.service.impl.customer;
+package com.example.casestudy.service.customer;
 
 import com.example.casestudy.dto.customer.CustomerDto;
 import com.example.casestudy.model.customer.Customer;
@@ -16,16 +16,6 @@ public class CustomerService implements ICustomerService {
     @Autowired
     private ICustomerRepository customerRepository;
 
-
-//    @Override
-//    public Page<Customer> findAllByNameContaining(String nameCustomer, Pageable pageable) {
-//        return customerRepository.findAllByNameContaining(nameCustomer, pageable);
-//    }
-//
-//    @Override
-//    public Page<Customer> findAllByContracts_EndDateBefore(String now, Pageable pageable) {
-//        return customerRepository.findAllByContracts_EndDateGreaterThan(now, pageable);
-//    }
 
     @Override
     public Page<Customer> searchCustomer(String nameSearch, String emailSearch, Pageable pageable) {

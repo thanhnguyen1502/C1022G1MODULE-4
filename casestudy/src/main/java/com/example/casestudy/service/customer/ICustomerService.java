@@ -1,4 +1,4 @@
-package com.example.casestudy.service.impl.customer;
+package com.example.casestudy.service.customer;
 
 import com.example.casestudy.dto.customer.CustomerDto;
 import com.example.casestudy.model.customer.Customer;
@@ -8,9 +8,6 @@ import org.springframework.data.domain.Pageable;
 import java.util.Map;
 
 public interface ICustomerService {
-//    Page<Customer> findAllByNameContaining(String nameCustomer, Pageable pageable);
-//
-//    Page<Customer> findAllByContracts_EndDateBefore(String now, Pageable pageable);
 
     Page<Customer> searchCustomer(String nameSearch, String emailSearch, Pageable pageable);
 

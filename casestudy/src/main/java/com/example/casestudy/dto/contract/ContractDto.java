@@ -32,7 +32,6 @@ public class ContractDto extends Validator {
 
     public ContractDto() {
     }
-
     @Override
     public void reset() {
 
