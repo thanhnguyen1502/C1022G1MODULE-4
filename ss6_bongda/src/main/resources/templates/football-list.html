@@ -41,8 +41,23 @@
                 <a th:href="@{/delete(id=${football.id})}">Delete</a>
             </td>
         </tr>
-
     </table>
+    <div class="row mt-3">
+        <div class="col-lg-4 text-end">
+            <a th:if="${footballList.hasPrevious()}"
+               th:href="@{/home(page=${footballList.number -1}, name=${name})}"
+               class="btn btn-success fst-italic">previous</a>
+        </div>
+        <div class="col-lg-4 text-center">
+            <span th:text="${footballList.number + 1}"></span> /
+            <span th:text="${footballList.totalPages}"></span>
+        </div>
+        <div class="col-lg-4 text-start">
+            <a th:if="${footballList.hasNext()}"
+               th:href="@{/home(page=${footballList.number + 1}, name=${name})}"
+               class="btn btn-success fst-italic">next</a>
+        </div>
+    </div>
 </div>
 </body>
 </html>

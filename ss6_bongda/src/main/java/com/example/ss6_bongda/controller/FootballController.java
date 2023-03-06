@@ -6,6 +6,8 @@ import com.example.ss6_bongda.service.IFootballService;
 import com.example.ss6_bongda.service.ITeamService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,8 +25,8 @@ public class FootballController {
     private ITeamService teamService;
 
     @GetMapping("/home")
-    private String goHome(Model model,@RequestParam(value = "name", defaultValue = "") String keySearch){
-        model.addAttribute("footballList", footballService.findAllByNameAllBirthday(keySearch));
+    private String goHome(@PageableDefault(value = 5) Pageable pageable, Model model, @RequestParam(value = "name", defaultValue = "") String keySearch){
+        model.addAttribute("footballList", footballService.findAllByNameAllBirthday(keySearch, pageable));
         model.addAttribute("teamList", teamService.findAll());
         model.addAttribute("name", keySearch);
         return "football-list";

@@ -4,6 +4,8 @@ import com.example.ss6_bongda.model.Football;
 import com.example.ss6_bongda.repository.IFootballRepository;
 import com.example.ss6_bongda.service.IFootballService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,8 +26,8 @@ public class FootballService implements IFootballService {
 
 
     @Override
-    public List<Football> findAllByNameAllBirthday(String keySearch) {
-        return footballRepository.findAllByNameContaining(keySearch);
+    public Page<Football> findAllByNameAllBirthday(String keySearch, Pageable pageable) {
+        return footballRepository.findAllByNameContaining(keySearch , pageable);
     }
 
     @Override
