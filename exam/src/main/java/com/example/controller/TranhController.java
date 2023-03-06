@@ -55,7 +55,7 @@ public class TranhController {
         Tranh tranh = new Tranh();
         BeanUtils.copyProperties(tranhDto, tranh);
         tranhService.save(tranh);
-        redirectAttributes.addFlashAttribute("mess", "Thêm mới thành công! ");
+        redirectAttributes.addFlashAttribute("mess", "successfully added new! ");
         return "redirect:/tranh/home";
     }
 }
