@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+
+<div class="table-hover text-center">
+    <h1>Thêm mới tranh</h1>
+</div>
+<div class="justify-content-center">
+    <form th:action="@{/tranh/add}" th:object="${tranhDto}" method="post">
+        <div class="bg-light">
+            <label for="tenTacPham">Tên tác phẩm</label>
+            <p th:if="${#fields.hasErrors('tenTacPham')}" th:errors="*{tenTacPham}" style="color: red"></p>
+            <input type="text" id="tenTacPham" th:field="*{tenTacPham}">
+        </div>
+        <div class="bg-light">
+            <label for="hoaSi">Hoạ Sĩ</label>
+            <p th:if="${#fields.hasErrors('hoaSi')}" th:errors="*{hoaSi}" style="color: red"></p>
+            <input type="text" id="hoaSi" th:field="*{hoaSi}">
+        </div>
+        <div class="bg-light">
+            <label for="namVe">Năm vẽ</label>
+            <p th:if="${#fields.hasErrors('namVe')}" th:errors="*{namVe}" style="color: red"></p>
+            <input type="text" id="namVe" th:field="*{namVe}">
+        </div>
+        <div class="bg-light">
+            <label for="theLoai">Thể Loại</label>
+            <select id="theLoai" th:field="*{theLoai.id}">
+                <option th:each="theLoai:${dsTheLoai}"
+                        th:value="${theLoai.id}"
+                        th:text="${theLoai.tenTheLoai}"></option>
+            </select>
+        </div>
+        <div class="bg-light">
+            <label for="kichThuoc">Kích thước</label>
+            <p th:if="${#fields.hasErrors('kichThuoc')}" th:errors="*{kichThuoc}" style="color: red"></p>
+            <input type="text" id="kichThuoc" th:field="*{kichThuoc}">
+        </div>
+        <div>
+            <button type="submit">Thêm mới</button>
+        </div>
+    </form>
+</div>
+
+
+
+<script src="/js/bootstrap.js"></script>
+
+<script src="common/popper.min.js"></script>
+<script src="common/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:fragment="css" rel="stylesheet" href="/css/bootstrap.css">
 </head>
 <body>
-$END$
+<div>
+    <h1>Create student</h1>
+</div>
+<div>
+    <form th:action="@{/student/add}" method="post" th:object="${studentDto}">
+        <div>
+            <label for="nameStudent">Name</label>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <input type="text" id="nameStudent" th:field="*{name}">
+        </div>
+        <div>
+            <label for="addressStudent">Address</label>
+            <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+            <input type="text" id="addressStudent" th:field="*{address}">
+        </div>
+        <div>
+            <label for="scheduleType">Schedule Type</label>
+            <select id="scheduleType" th:field="*{scheduleType.id}">
+                <option th:each="scheduleTypes: ${scheduleType}"
+                        th:value="${scheduleTypes.id}"
+                        th:text="${scheduleTypes.name}"></option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">save</button>
+        </div>
+    </form>
+</div>
 </body>
 </html>

@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:fragment="css" rel="stylesheet" href="/css/bootstrap.css">
 </head>
 <body>
-$END$
+<div>
+    <h1>Edit</h1>
+</div>
+<div>
+    <form th:action="@{/customer/save}" th:object="${customerDto}" method="post">
+        <div>
+            <input type="hidden"  th:field = "*{id}" readonly>
+        </div>
+        <div>
+            <label >Name</label>
+            <input type="text" th:field="*{name}">
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" th:field="*{email}">
+        </div>
+        <div>
+            <select th:field="*{customerType}">
+                <option th:each="customerEd :${customerType}"
+                        th:value="${customerEd.id}"
+                        th:text="${customerEd.name}">
+                </option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">save</button>
+        </div>
+    </form>
+</div>
+
+<script th:fragment="js" src="/js/bootstrap.js"></script>
+
+<script src="common/popper.min.js"></script>
+<script src="common/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
 </body>
 </html>

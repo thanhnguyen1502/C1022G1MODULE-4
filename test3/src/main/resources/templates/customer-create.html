@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+
+<div>
+    <h1>Management Customer</h1>
+</div>
+
+<div class="container-fluid">
+<!--    @ duong dan-->
+    <form th:action="@{/customer/add}" method="post" th:object="${customerDto}">
+        <div>
+            <label for="nameCustomer">Name Customer</label>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red"></p>
+            <input type="text" id="nameCustomer" th:field="*{name}">
+        </div>
+        <div>
+            <label for="addressCustomer">Address Customer</label>
+            <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" style="color: red;"></p>
+            <input type="text" id="addressCustomer" th:field="*{address}">
+        </div>
+        <div>
+            <label for="genderCustomer">Gender Customer</label>
+            <p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" style="color: red;"></p>
+            <input type="text" id="genderCustomer" th:field="*{gender}">
+        </div>
+        <div>
+            <label for="customerType">Customer Type</label>
+            <select id="customerType" th:field="*{customerType.id}">
+                <option th:each="item:${customerTypeList}"
+                        th:value="${item.id}"
+                        th:text="${item.name}"></option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</div>
+
+<script src="/js/bootstrap.js"></script>
+
+<script src="common/popper.min.js"></script>
+<script src="common/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+</body>
+</html>

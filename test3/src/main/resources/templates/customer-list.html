@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+
+<div>
+    <h1>Management Customer</h1>
+</div>
+<div>
+    <form th:action="@{/customer/home}">
+        <input type="text" name="nameSearch">
+        <button type="submit">Search</button>
+    </form>
+</div>
+<div>
+    <p th:text="${mess}"></p>
+</div>
+<div>
+    <table class="table table-hover fst-italic">
+        <tr class="table-success">
+            <th>#</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>Customer Type</th>
+            <th>
+                <a href="/customer/create">+</a>
+            </th>
+        </tr>
+        <tr th:each="customers, count : ${customerList}">
+            <td th:text="${count.count}"></td>
+            <td th:text="${customers.name}"></td>
+            <td th:text="${customers.address}"></td>
+            <td th:text="${customers.gender}"></td>
+            <td th:text="${customers.customerType.name}"></td>
+            <td>
+                <a th:href="@{/customer/delete(id=${customers.id})}">delete</a>
+
+            </td>
+
+<!--            <td>-->
+<!--                <button th:attr="onclick=|showInfoDelete('${customers.id}' , '${customers.name}')|" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalDelete">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">-->
+<!--                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>-->
+<!--                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>-->
+<!--                    </svg>-->
+<!--                </button>-->
+<!--            </td>-->
+        </tr>
+    </table>
+</div>
+
+
+<!-- Modal delete-->
+<!--<td>-->
+<!--    <button th:attr="onclick=|showInfoDelete('${customers.id}' , '${customers.name}')|" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalDelete">-->
+<!--        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">-->
+<!--            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>-->
+<!--            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>-->
+<!--        </svg>-->
+<!--    </button>-->
+<!--</td>-->
+
+<!--<div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog">-->
+<!--        <div class="modal-content">-->
+<!--            <form action="/customer/delete" method="post">-->
+<!--                <div class="modal-header">-->
+<!--                    <h5 class="modal-title" id="exampleModalLabel">Delete Confirm</h5>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <input type="number" hidden id="id" name="id">-->
+<!--                    Are you sure delete facility: <span id="name" class="fw-bold"></span>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+<!--                    <button type="submit" class="btn btn-danger">Delete</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<script>
+    function showInfoDelete(id, name){
+        document.getElementById("id").value = id;
+        document.getElementById("name").innerText = name;
+    }
+</script>
+<script src="/js/bootstrap.js"></script>
+
+<script src="common/popper.min.js"></script>
+<script src="common/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+</body>
+</html>
+
+

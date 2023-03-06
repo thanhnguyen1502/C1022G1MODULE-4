@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+<body>
+
+<div>
+    <h1>Danh sách tác phẩm</h1>
+</div>
+<div>
+    <form th:action="@{/tranh/home}">
+        <input type="text" name="timTacPham">
+        <button type="submit">Search</button>
+    </form>
+    <p th:text="${mess}"></p>
+</div>
+<div>
+    <table class="table table-hover" >
+        <tr class="bg-info link-light">
+            <th>STT</th>
+            <th>Tên tác phẩm</th>
+            <th>Hoạ sĩ</th>
+            <th>Năm vẽ</th>
+            <th>Thể loại</th>
+            <th>Kích thước</th>
+            <th>Chức năng</th>
+            <th>
+                <a href="/tranh/create">+</a>
+
+            </th>
+        </tr>
+        <tr th:each="tranh, count:${dsTranh}">
+            <td th:text="${count.count}"></td>
+            <td th:text="${tranh.tenTacPham}"></td>
+            <td th:text="${tranh.hoaSi}"></td>
+            <td th:text="${tranh.namVe}"></td>
+            <td th:text="${tranh.theLoai.tenTheLoai}"></td>
+            <td th:text="${tranh.kichThuoc}"></td>
+            <td>
+                <a th:href="@{/tranh/delete(id=${tranh.id})}">Delete</a>
+
+            </td>
+        </tr>
+    </table>
+</div>
+<div>
+    <table class="table table-hover fst-italic">
+        <tr class="table-success">
+
+        </tr>
+    </table>
+</div>
+<script src="/js/bootstrap.js"></script>
+
+<script src="common/popper.min.js"></script>
+<script src="common/bootstrap-5.0.2-dist/js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:fragment="css" rel="stylesheet" href="/css/bootstrap.css">
 </head>
 <body>
-$END$
+<div>
+    <h1>Thêm mới</h1>
+</div>
+<div>
+    <form th:object="${customerDto}" th:action="@{/customer/add}" method="post">
+        <div>
+            <label for="nameCustomer">Name</label>
+            <p style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <input type="text" id="nameCustomer" th:field ="*{name}">
+        </div>
+        <div>
+            <label for="emailCustomer">Email</label>
+            <p style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+            <input type="text" id="emailCustomer" th:field = "*{email}">
+        </div>
+        <div>
+            <label for="customerType">Customer type</label>
+            <select th:field="*{customerType.id}" id="customerType">
+                <option th:each="customerObj : ${customerType}"
+                        th:value="${customerObj.id}"
+                        th:text="${customerObj.name}">
+                </option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</div>
+<script th:fragment="js" src="/js/bootstrap.js"></script>
 </body>
 </html>

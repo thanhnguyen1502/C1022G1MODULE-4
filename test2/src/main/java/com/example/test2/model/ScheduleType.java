@@ -9,6 +9,7 @@ public class ScheduleType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+
     @OneToMany(mappedBy = "scheduleType")
     private List<Student> students;
 
