@@ -52,7 +52,7 @@ public class FootballController {
         new FootballDto().validate(footballDto, bindingResult);
         if (bindingResult.hasErrors()){
             model.addAttribute("teamList", teamService.findAll());
-            return "football-list";
+            return "football-create";
         }
         Football football = new Football();
         BeanUtils.copyProperties(footballDto, football);

@@ -14,12 +14,12 @@
     <form th:action="@{/add}" th:object="${footballDto}" method="post">
         <div>
             <label for="name">Name</label>
-            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: darkred;"></p>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color: red;"></p>
             <input type="text" id="name" th:field="*{name}">
         </div>
         <div>
             <label for="birthday">Birthday</label>
-            <p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" style="color: darkred"></p>
+            <p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" style="color: red"></p>
             <input type="text" id="birthday" th:field="*{birthday}">
         </div>
          <div>
@@ -38,7 +38,6 @@
                  <option th:each="teams:${teamList}"
                          th:value="${teams.id}"
                          th:text="${teams.name}">
-
                  </option>
              </select>
         </div>
