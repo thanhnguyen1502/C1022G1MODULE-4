@@ -18,7 +18,7 @@ public class FootballDto implements Validator {
     @Min(value = 16, message = "chưa đủ tuổi")
     @Max(value = 100, message = "quá già")
     private String birthday;
-    
+
     private String experience;
     private String location;
     private Team team;
