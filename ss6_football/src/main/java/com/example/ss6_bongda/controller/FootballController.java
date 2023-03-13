@@ -34,17 +34,6 @@ public class FootballController {
         return "football-list";
     }
 
-    @GetMapping("")
-    public String showList(Model model) throws ExceptionHandle {
-        List<Football> footballList = footballService.findAll();
-        if (footballList.size() > 11) {
-            throw new ExceptionHandle();
-        }
-        model.addAttribute("footballList", footballList);
-        model.addAttribute("teamList", teamService.findAll());
-        return "list";
-    }
-
     @GetMapping("/delete")
     public String delete(@RequestParam Integer id){
         footballService.remove(id);
@@ -72,10 +61,5 @@ public class FootballController {
         footballService.save(football);
         redirectAttributes.addFlashAttribute("mess", "successfully added new! ");
         return "redirect:/home";
-    }
-
-    @ExceptionHandler(ExceptionHandle.class)
-    public String showException() {
-        return "errorPage";
     }
 }
